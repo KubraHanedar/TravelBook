@@ -16,8 +16,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         mapView.delegate = self
+    
         
-        // Do any additional setup after loading the view.
+        
     }
 
 
