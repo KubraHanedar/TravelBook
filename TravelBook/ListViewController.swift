@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
