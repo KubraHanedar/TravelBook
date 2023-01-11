@@ -22,6 +22,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var titleArray = [String]()
     var idArray = [UUID]()
+    var chosenTitle = ""
+    var chosenTitleID : UUID?
     
     
 
@@ -72,9 +74,24 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func addButtonClicked() {
+        chosenTitle = ""
+        performSegue(withIdentifier: "toViewController", sender: nil)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenTitle = titleArray[indexPath.row]
+        chosenTitleID = idArray[indexPath.row]
         performSegue(withIdentifier: "toViewController", sender: nil)
     }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toViewController" {
+            let destinationVC = segue.destination as! ViewController
+            destinationVC.selectedTitle = chosenTitle
+            destinationVC.selectedTitleID = chosenTitleID
+        }
+    }
 
    
 
